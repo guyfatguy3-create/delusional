@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$DELUSIONAL</title>
-
     <style>
         * {
             margin: 0;
@@ -15,31 +14,29 @@
         html, body {
             height: 100%;
             overflow: hidden;
-            background: black;
+            background: #000;
             font-family: Arial, sans-serif;
         }
 
-        /* FULLSCREEN VIDEO */
+        /* Video Background */
         #bgVideo {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            object-position: center center;
-            transform: translate(-50%, -50%);
             z-index: 0;
-            background: black;
         }
 
+        /* Enter Screen */
         .enter-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: black;
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -64,13 +61,14 @@
             display: none;
         }
 
+        /* Sidebar */
         .sidebar {
             position: fixed;
-            left: 20px;
-            top: 20px;
+            left: 25px;
+            top: 25px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
             z-index: 100;
         }
 
@@ -79,18 +77,65 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            padding: 8px;
-            border-radius: 6px;
+            padding: 12px;
+            border-radius: 12px;
             transition: all 0.2s ease;
-            color: rgba(255,255,255,0.7);
-            font-size: 9px;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .icon:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
             transform: scale(1.1);
         }
 
+        .icon svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .icon.tiktok svg {
+            fill: #ff0050;
+        }
+
+        .icon.x-btn svg {
+            fill: #fff;
+        }
+
+        .icon span {
+            margin-top: 6px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: bold;
+        }
+
+        /* PumpFun Button */
+        .pumpfun-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .pumpfun-btn a {
+            display: block;
+            padding: 12px 24px;
+            background: #1db954;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .pumpfun-btn a:hover {
+            background: #1ed760;
+            transform: scale(1.05);
+        }
+
+        /* Learn More Button */
         .learn-more {
             position: fixed;
             right: 30px;
@@ -115,8 +160,10 @@
 
         .learn-more a:hover {
             background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
+        /* CA Coming Soon */
         .ca-text {
             position: fixed;
             bottom: 20px;
@@ -131,7 +178,6 @@
     </style>
 </head>
 <body>
-
     <audio id="bgMusic" loop>
         <source src="music.mp3" type="audio/mpeg">
     </audio>
@@ -140,19 +186,39 @@
         <source src="background.mp4" type="video/mp4">
     </video>
 
+    <!-- Click to Enter -->
     <div class="enter-screen" id="enterScreen">
         <div class="enter-text">click to enter</div>
     </div>
 
+    <!-- Sidebar -->
     <div class="sidebar">
-        <a href="#" class="icon" target="_blank">TikTok</a>
-        <a href="#" class="icon" target="_blank">X</a>
+        <a href="#" class="icon tiktok" id="tiktokLink" target="_blank">
+            <svg viewBox="0 0 48 48">
+                <path d="M38.4 16.2c-2.94 0-5.55-1.35-7.29-3.45-.03-.03-.06-.09-.09-.12V31.5c0 6.63-5.37 12-12 12s-12-5.37-12-12 5.37-12 12-12c.66 0 1.29.06 1.92.15v6.15c-.63-.15-1.26-.3-1.92-.3-3.315 0-6 2.685-6 6s2.685 6 6 6 6-2.685 6-6V4.5h6c0 .39.03.78.09 1.17.48 3.27 2.91 5.88 6.09 6.51.63.12 1.26.18 1.92.18v3.84h-.72z"/>
+            </svg>
+            <span>TikTok</span>
+        </a>
+
+        <a href="#" class="icon x-btn" id="xLink" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>X</span>
+        </a>
     </div>
 
+    <!-- PumpFun Button -->
+    <div class="pumpfun-btn">
+        <a href="#" target="_blank">PUMP.FUN</a>
+    </div>
+
+    <!-- Learn More -->
     <div class="learn-more">
-        <a href="#">learn more</a>
+        <a href="about.html">learn more</a>
     </div>
 
+    <!-- CA Coming Soon -->
     <div class="ca-text">CA : Coming Soon</div>
 
     <script>
@@ -166,6 +232,5 @@
             enterScreen.classList.add('hidden');
         };
     </script>
-
 </body>
 </html>
